@@ -1,4 +1,4 @@
-Source code for a main menu implementation using UE's Slate
+Main menu using UE's Slate
 -------
 Tested with Unreal Engine 4.7 & 4.8
 
