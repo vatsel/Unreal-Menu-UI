@@ -3,6 +3,7 @@ Main menu using UE's Slate
 Tested with Unreal Engine 4.7 & 4.8
 
 - Developed for the Manipulators http://themanipulators.co.uk
+- Screenshot https://raw.githubusercontent.com/vatsel/Unreal-Menu-UI/master/screenshot.jpg
 
 Features
 ********
