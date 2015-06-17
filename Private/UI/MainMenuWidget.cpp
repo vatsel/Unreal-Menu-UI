@@ -10,7 +10,6 @@
 void SMainMenuWidget::Construct(const FArguments& InArgs)
 {
 	menuWidgetStyle = &FManipulatorsStyle::Get().GetWidgetStyle<FMainMenuStyle>("MainMenuWidgetStyle");
-	buttonsBuilt = false;
 	ownerHUD = InArgs._ownerHUD;
 	
 	ChildSlot
