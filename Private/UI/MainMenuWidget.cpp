@@ -1,9 +1,9 @@
 // © 2015 Mark Vatsel
 
 #include "Manipulators_01.h"
-#include "Public/UI/MainMenuWidget.h"
-#include "Public/UI/MainMenuWidgetStyle.h"
-#include "Public/UI/MainMenuButtonWidget.h"
+#include "Public/UI/MainMenu/MainMenuWidget.h"
+#include "Public/UI/MainMenu/MainMenuWidgetStyle.h"
+#include "Public/UI/MainMenu/MainMenuButtonWidget.h"
 #include "SlateGameResources.h"
 #include "Public/UI/ManipulatorsStyle.h"
 
@@ -29,7 +29,6 @@ void SMainMenuWidget::Construct(const FArguments& InArgs)
 			.VAlign( VAlign_Center)
 			.HAlign( HAlign_Center)
 				[
-
 					SNew(SImage)
 					.Image(&menuWidgetStyle->backgroundBrush)
 				]
@@ -65,7 +64,10 @@ void SMainMenuWidget::BuildTitle(FMainMenuItem& menuItem, int buttonIndex)
 	TSharedPtr<SMainMenuButton> throwawayButton = SAssignNew(menuItem.widget, SMainMenuButton)
 		.buttonText(menuItem.GetText())
 		.font(FManipulatorsStyle::Get().GetFontStyle("Manipulators.MenuTitleFont"))
-		.buttonClickedEvent(this,&SMainMenuWidget::PressButton,buttonIndex);
+		.buttonClickedEvent(this, &SMainMenuWidget::PressButton, buttonIndex)
+		.textColour(menuWidgetStyle->textColour)
+		.inactiveTextColour(menuWidgetStyle->inactiveTextColour)
+		.hoverTextColour(menuWidgetStyle->textHoverColour);
 
 	buttonBox->AddSlot()
 		.HAlign(HAlign_Center)
@@ -93,7 +95,10 @@ void SMainMenuWidget::BuildOption(FMainMenuItem& menuItem, int buttonIndex)
 		.buttonText(menuItem.GetText())
 		.font(FManipulatorsStyle::Get().GetFontStyle("Manipulators.MenuSubtitleFont"))
 		.inactiveInput(menuItem.IsInactive())
-		.buttonClickedEvent(this, &SMainMenuWidget::PressButton, buttonIndex);
+		.buttonClickedEvent(this, &SMainMenuWidget::PressButton, buttonIndex)
+		.textColour(menuWidgetStyle->textColour)
+		.inactiveTextColour(menuWidgetStyle->inactiveTextColour)
+		.hoverTextColour(menuWidgetStyle->textHoverColour);
 
 	buttonBox->AddSlot()
 		.HAlign(HAlign_Center)
@@ -110,7 +115,10 @@ void SMainMenuWidget::BuildEnd(FMainMenuItem& menuItem, int buttonIndex)
 	TSharedPtr<SMainMenuButton> throwawayButton = SAssignNew(menuItem.widget, SMainMenuButton)
 		.buttonText(menuItem.GetText())
 		.font(FManipulatorsStyle::Get().GetFontStyle("Manipulators.MenuExitFont"))
-		.buttonClickedEvent(this, &SMainMenuWidget::PressButton, buttonIndex);
+		.buttonClickedEvent(this, &SMainMenuWidget::PressButton, buttonIndex)
+		.textColour(menuWidgetStyle->textColour)
+		.inactiveTextColour(menuWidgetStyle->inactiveTextColour)
+		.hoverTextColour(menuWidgetStyle->textHoverColour);
 
 	buttonBox->AddSlot()
 		.HAlign(HAlign_Center)
@@ -127,9 +135,9 @@ void SMainMenuWidget::BuildMainMenu(TSharedPtr<TArray<FMainMenuItem>> menuToBuil
 	for (int i = 0; i < menuToBuild.Get()->Num(); ++i)
 	{
 		MainMenuItem type = (*menuToBuild.Get())[i].GetType();
-		if (type == MainMenuItem::Title)		BuildTitle((*menuToBuild.Get())[i], i);
-		else if (type == MainMenuItem::Option)  BuildOption((*menuToBuild.Get())[i],i);
-		else if (type == MainMenuItem::End)		BuildEnd((*menuToBuild.Get())[i], i);
+		if (type == MainMenuItem::Title)			BuildTitle((*menuToBuild.Get())[i], i);
+		else if (type == MainMenuItem::Option)		BuildOption((*menuToBuild.Get())[i],i);
+		else if (type == MainMenuItem::End)			BuildEnd((*menuToBuild.Get())[i], i);
 		else UE_LOG(SlateDebug, Warning, TEXT("Unknown type of enum MainMenuItem, skipped building button %s."),*(( *menuToBuild.Get() )[i].GetText().ToString()));
 	}
 }

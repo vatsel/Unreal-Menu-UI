@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Manipulators_01.h"
-#include "Public/UI/MainMenuHUD.h"
+#include "MainMenuHUD.h"
 
 
 class SMainMenuButton : public SCompoundWidget
@@ -17,10 +17,10 @@ class SMainMenuButton : public SCompoundWidget
 	TAttribute<FText> buttonText;
 	TAttribute<FSlateFontInfo> font;
 	TAttribute<TOptional<bool>> inactiveInput;
+	TAttribute<TOptional<FLinearColor>> inactiveTextColour;
 	TAttribute<TOptional<FLinearColor>> textColour;
 	TAttribute<TOptional<FLinearColor>> hoverTextColour;
-	TAttribute<TOptional<FButtonClickedDelegate>> mouseClickedDelegate;
-
+	
 	FSlateColor GetTextColour() const;
 	virtual FReply OnMouseButtonDown(const FGeometry& aGeometry, const FPointerEvent& mouseEvent) override;
 	virtual void OnMouseEnter(const FGeometry& aGeometry, const FPointerEvent& mouseEvent) override;
@@ -33,9 +33,9 @@ public:
 	SLATE_ARGUMENT(FText, buttonText)
 	SLATE_ARGUMENT(FSlateFontInfo, font)
 	SLATE_ARGUMENT(TOptional<bool>, inactiveInput)
+	SLATE_ARGUMENT(TOptional<FLinearColor>,inactiveTextColour)
 	SLATE_ARGUMENT(TOptional<FLinearColor>, textColour) 
 	SLATE_ARGUMENT(TOptional<FLinearColor>,hoverTextColour)
-	SLATE_ARGUMENT(FButtonClickedDelegate, mouseClickedDelegate)
 
 	SLATE_EVENT(FOnClicked, buttonClickedEvent)
 

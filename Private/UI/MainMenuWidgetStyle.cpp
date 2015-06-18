@@ -1,7 +1,7 @@
 // © 2015 Mark Vatsel
 
 #include "Manipulators_01.h"
-#include "Public/UI/MainMenuWidgetStyle.h"
+#include "Public/UI/MainMenu/MainMenuWidgetStyle.h"
 #include "Public/UI/ManipulatorsStyle.h"
 
 FMainMenuStyle::FMainMenuStyle(){}

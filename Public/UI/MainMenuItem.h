@@ -2,7 +2,7 @@
 
 #pragma once
 #include "Manipulators_01.h"
-#include "Public/UI/MainMenuButtonWidget.h"
+#include "Public/UI/MainMenu/MainMenuButtonWidget.h"
 #include "Public/EnumTypes.h"
 
 /** Stores information about an SMainMenuButton. Useful to create the data prior to a widget's Construct()

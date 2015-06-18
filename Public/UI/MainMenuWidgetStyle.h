@@ -35,6 +35,9 @@ struct FMainMenuStyle : public FSlateWidgetStyle
 	UPROPERTY(EditAnywhere, Category = Appearance)
 		FLinearColor inactiveTextColour = FLinearColor(0.3f,0.3f,0.3f);
 
+	UPROPERTY(EditAnywhere, Category = Appearance)
+		FLinearColor textHoverColour = FLinearColor(0.f, 0.843f, 1.f);
+
 	UPROPERTY(EditAnywhere, Category = MenuItems)
 		float menuItemsPadding = 5.0f;
 

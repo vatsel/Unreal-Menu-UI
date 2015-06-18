@@ -18,9 +18,7 @@ class SMainMenuWidget : public SCompoundWidget
 	TWeakObjectPtr<AMainMenuHUD> ownerHUD;
 	const struct FMainMenuStyle *menuWidgetStyle;
 	TSharedPtr<SVerticalBox> buttonBox;
-
-	bool buttonsBuilt = false;
-
+	
 	/** Calls other functions to create specific widgets and appends them to buttonBox.*/
 	void BuildMainMenu(TSharedPtr<TArray<class FMainMenuItem>> menuToBuild);
 

@@ -1,9 +1,9 @@
 // © 2015 Mark Vatsel
 
 #include "Manipulators_01.h"
-#include "Public/UI/MainMenuButtonWidget.h"
+#include "Public/UI/MainMenu/MainMenuButtonWidget.h"
 #include "Public/UI/ManipulatorsStyle.h"
-#include "Public/UI/MainMenuHUD.h"
+#include "Public/UI/MainMenu/MainMenuHUD.h"
 
 
 void SMainMenuButton::Construct(const FArguments& inArgs)
@@ -12,10 +12,12 @@ void SMainMenuButton::Construct(const FArguments& inArgs)
 	buttonText = inArgs._buttonText;
 	font = inArgs._font;
 	inactiveInput = inArgs._inactiveInput;
+	inactiveTextColour = inArgs._inactiveTextColour;
 	textColour = inArgs._textColour;
 	buttonClickedEvent = inArgs._buttonClickedEvent;
 	hoverTextColour = inArgs._hoverTextColour;
 	
+
 	if (inactiveInput.Get().IsSet()) inactive = inactiveInput.Get().GetValue();
 	
 	ChildSlot
@@ -31,7 +33,7 @@ void SMainMenuButton::Construct(const FArguments& inArgs)
 
 FSlateColor SMainMenuButton::GetTextColour() const
 {
-	if (inactive) return textColour.Get().IsSet() ? textColour.Get().GetValue() : FLinearColor(0.25f,0.25f,0.25f);  
+	if (inactive) return inactiveTextColour.Get().IsSet() ? inactiveTextColour.Get().GetValue() : FLinearColor(0.25f, 0.25f, 0.25f);
 	else
 	{
 		if (hoverMode) return hoverTextColour.Get().IsSet() ? hoverTextColour.Get().GetValue() : FLinearColor(0.f, 0.843f, 1.f);
