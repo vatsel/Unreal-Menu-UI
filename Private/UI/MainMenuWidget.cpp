@@ -51,11 +51,7 @@ FReply SMainMenuWidget::OnFocusReceived(const FGeometry& aGeometry, const FFocus
 FReply SMainMenuWidget::PressButton(int index)
 {
 	FMainMenuItem menuButton = (*ownerHUD->GetMenu())[index];
-	if (menuButton.onButtonClicked.IsBound())
-	{
-		menuButton.onButtonClicked.Execute();
-		return FReply::Handled();
-	}
+	if (menuButton.onButtonClicked.IsBound()) menuButton.onButtonClicked.Execute();
 	return FReply::Unhandled();
 }
 

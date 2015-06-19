@@ -29,8 +29,8 @@ class SMainMenuWidget : public SCompoundWidget
 	
 	FReply PressButton(int index);
 
-	DECLARE_DELEGATE(FButtonClickedDelegate)
-	FOnClicked buttonClickedEvent;
+	//DECLARE_DELEGATE(FButtonClickedDelegate)
+	//FOnClicked buttonClickedEvent;
 
 public:
 	void Construct(const FArguments& InArgs);
